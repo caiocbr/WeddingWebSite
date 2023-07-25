@@ -1,0 +1,64 @@
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+GUESTLIST = "./static/guestlist.txt"
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/guestlist', methods=['GET', 'POST'])
+def guestlist():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        code = request.form.get('confirmationCode')
+        confirmed_guests = read_guests()
+        for i, (guest, confirmed) in enumerate(confirmed_guests):
+            if code.isdigit() and guest == name and compute_hash(name) == int(code):
+                confirmed_guests[i] = (guest, True)
+                write_guests(confirmed_guests)
+                return "Presença confirmada para " + name + "!"
+        return "Código para de confirmação inválido: " + str(compute_hash(name))
+    
+    confirmed_guests = read_guests()
+    return render_template('guestlist.html', guest_names=confirmed_guests)
+
+@app.route('/gifts')
+def gifts():
+    return render_template('gifts.html')
+
+def read_guests():
+    confirmed_guests = []
+    with open(GUESTLIST, 'r') as file:
+        for line in file:
+            name = line.replace('\n', '')
+            parts = line.strip().split()
+            if len(parts) > 1 and parts[len(parts)-1].lower() == 'true':
+                name = name[:-5]
+                confirmed_guests.append((name, True))
+            else:
+                confirmed_guests.append((name, False))
+    return confirmed_guests
+
+def write_guests(confirmed_guests):
+    with open(GUESTLIST, 'w') as file:
+        for guest, confirmed in confirmed_guests:
+            print(guest)
+            print(confirmed)
+            if(not confirmed):
+                confirmed = ""
+            file.write(f"{guest.rstrip()} {str(confirmed).lower()}\n")
+
+def compute_hash(s):
+    p = 53
+    m = 10**9 + 9
+    hash_value = 0
+    p_pow = 1
+    for c in s:
+        hash_value = (hash_value + (ord(c) + 1) * p_pow) % m
+        p_pow = (p_pow * p) % m
+    return hash_value
+
+if __name__ == '__main__':
+    app.run(debug=True)
