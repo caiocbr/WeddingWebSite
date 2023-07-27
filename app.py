@@ -1,11 +1,10 @@
 from flask import Flask, render_template, request
 import database
 
+# Starting Flask Application
 app = Flask(__name__)
 
-GUESTLIST = "./static/guestlist.txt"
-
-# Conectar ao MongoDB
+# Connect MongoDB
 client = database.connect_to_mongodb()
 db = client['GuestList']
 collection = db['Guests']
@@ -19,17 +18,21 @@ def guestlist():
     if request.method == 'POST':
         name = request.form.get('name')
         code = request.form.get('confirmationCode')
-        confirmed_guests = read_guests()
-        for i, (guest, confirmed) in enumerate(confirmed_guests):
-            if code.isdigit() and guest == name and compute_hash(name) == int(code):
-                confirmed_guests[i] = (guest, True)
-                #write_guests(confirmed_guests)
-                database.update_guest_status(collection, name, True)
-                return "Presença confirmada para " + name + "!"
-        return "Código para de confirmação inválido: " + str(compute_hash(name))
+        print(str(compute_hash(name)))
+
+        if code.isdigit() and compute_hash(name) == int(code):
+            updated = database.update_guest_status(collection, name, True)
+            if updated == "updated":
+                return render_template('guestlist.html', status="post", message="Presença de " + name + " confirmada!")
+            elif updated == "unknow":
+                return render_template('guestlist.html', status="post", message="Falha ao Confirmar Presença!")
+            else:
+                return render_template('guestlist.html', status="post", message="Sua presença já foi confirmada!")
+
+        return render_template('guestlist.html', status="post", message="Falha ao Confirmar Presença!")
     
-    confirmed_guests = read_guests()
-    return render_template('guestlist.html', guest_names=confirmed_guests)
+    elif request.method == 'GET':
+        return render_template('guestlist.html', status="get", message="")
 
 @app.route('/gifts')
 def gifts():
@@ -42,15 +45,6 @@ def read_guests():
     for document in guests:
         confirmed_guests.append((document['Name'], document['Confirmation']))
     return confirmed_guests
-
-def write_guests(confirmed_guests):
-    with open(GUESTLIST, 'w') as file:
-        for guest, confirmed in confirmed_guests:
-            print(guest)
-            print(confirmed)
-            if(not confirmed):
-                confirmed = ""
-            file.write(f"{guest.rstrip()} {str(confirmed).lower()}\n")
 
 def compute_hash(s):
     p = 53

@@ -44,6 +44,27 @@
   color: #D79B62;
 }
 
+.formContent{
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+}
+
+.confirmationForm{
+  margin-left: auto;
+  margin-right: auto;
+  height: fit-content;
+  width: fit-content;
+  display: grid;
+  justify-items: center;
+}
+
+.formField{
+  width: 300px;
+  margin-top: 20px;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Major+Mono+Display');
 .holder {
   position: relative;

@@ -25,7 +25,13 @@ def update_guest_status(collection, name, status):
     try:
         filter_criteria = {"Name": name}
         update_operation = {"$set": {"Confirmation": status}}
-        collection.update_one(filter_criteria, update_operation)
+        result = collection.update_one(filter_criteria, update_operation)
+        
+        if result.matched_count == 0:
+            return "unknow"
+        if result.modified_count == 0:    
+            return "confirmed"
+        return "updated"
     except AutoReconnect:
         print("Conexão com o banco de dados caiu. Tentando reconectar...")
         client = connect_to_mongodb()
