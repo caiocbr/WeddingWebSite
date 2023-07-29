@@ -59,10 +59,10 @@
 .letter {
     position: absolute;
     top: 0;
-    width: 80%;
+    width: 90%;
     height: 90%;
-    background-color: rgb(235, 238, 192);
-    border-radius: 15px;
+    background-image: url("./BackGroundInvite.png");
+    background-size: cover;
     z-index: 2;
     animation: slide-up 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
     animation-delay: 1s;
