@@ -5,7 +5,7 @@
     margin-top: 320px;
     height: 350px;
     width: 600px;
-    background-color: #3760C9;
+    background-color: #800000;
     position: relative;
     display: flex;
     justify-content: center;
@@ -27,7 +27,7 @@
 
 /* Lid when closed */
 .lid.one {
-    border-top: 175px solid #658ced;
+    border-top: 175px solid #a12c2c;
     transform: rotateX(0deg);
     z-index: 3;
     animation: open-lid-one 0.5s linear forwards;
@@ -36,7 +36,7 @@
 
 /* Lid when opened */
 .lid.two {
-    border-top: 175px solid #3760C9;
+    border-top: 175px solid #800000;
     transform: rotateX(90deg);
     z-index: 1;
     animation: open-lid-two 0.5s linear forwards;
@@ -50,9 +50,9 @@
     top: 0;
     left: 0;
     border-top: 175px solid transparent;
-    border-right: 300px solid #C4DFF0;
-    border-bottom: 175px solid #C4DFF0;
-    border-left: 300px solid #a4d4f2;
+    border-right: 300px solid #d04747;
+    border-bottom: 175px solid #d04747;
+    border-left: 300px solid #C93737;
     z-index: 3;
 }
 
