@@ -10,6 +10,11 @@
     margin-top: 20px;
 }
 
+.section-text{
+  font-family: 'Belleza';
+  font-size: 25px;
+}
+
 .footer{
     height: 150px;
     width: 100%;
