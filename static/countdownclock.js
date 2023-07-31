@@ -35,7 +35,6 @@
         var animationPeriod = "06.01.2024"
         for (var i=0; i<=String(animationPeriod).length-1; i++) {
           var digit = animation.element(year, "div", "digit", String(animationPeriod).substr(i, 1));
-          console.log(digit.style.top)
           digit.style.top = (0 - (digit.clientHeight * 0.5)) + "px";
           timeline
             .to(digit, 0.5, {top: 0, opacity: 1, ease: Bounce.easeOut});
