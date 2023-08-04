@@ -83,6 +83,7 @@
 
 .formField::placeholder {
   font-family: 'Great Vibes';
+  font-size: 22px;
 }
 
 .holder {
