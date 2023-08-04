@@ -68,12 +68,22 @@
   justify-items: center;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display');
+
 .formField {
   width: 300px;
   margin-top: 20px;
+  font-family: 'Belleza';
+  color: #800000;
+  border: none;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: #000000;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display');
+.formField::placeholder {
+  font-family: 'Great Vibes';
+}
 
 .holder {
   position: relative;
@@ -186,13 +196,14 @@
 }
 
 .button {
-  margin-top: -15px;
+  margin-top: -20px;
   border: none;
   border-radius: 5px;
-  background-color: #ac4341;
   color: #FFF;
+  background-color: #ac4341;
   height: 40px;
   width: 200px;
   cursor: pointer;
+  font-family: 'Belleza';
 
 }
