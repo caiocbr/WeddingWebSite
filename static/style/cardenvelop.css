@@ -62,7 +62,7 @@
     top: 0;
     width: 90%;
     height: 90%;
-    background-image: url("./BackGroundInvite.png");
+    background-image: url("../images/BackGroundInvite.png");
     background-size: cover;
     z-index: 2;
     animation: slide-up 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
@@ -72,8 +72,10 @@
 .letter p {
     text-align: center;
     font-size: 30px;
-    margin-top: 30px;
-    color: #3B4049;
+    color: #D79B62;
+    font-family: 'Belleza';
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 @keyframes slide-up {

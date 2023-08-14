@@ -13,7 +13,7 @@ collection = db['Guests']
 def home():
     return render_template('index.html')
 
-@app.route('/guestlist', methods=['GET', 'POST'])
+@app.route('/invite', methods=['GET', 'POST'])
 def guestlist():
     if request.method == 'POST':
         name = request.form.get('name')
@@ -23,16 +23,16 @@ def guestlist():
         if code.isdigit() and compute_hash(name) == int(code):
             updated = database.update_guest_status(collection, name, True)
             if updated == "updated":
-                return render_template('guestlist.html', status="post", message="Presença de " + name + " confirmada!")
+                return render_template('invite.html', status="post", message="Presença de " + name + " confirmada!")
             elif updated == "unknow":
-                return render_template('guestlist.html', status="post", message="Falha ao Confirmar Presença!")
+                return render_template('invite.html', status="post", message="Falha ao Confirmar Presença!")
             else:
-                return render_template('guestlist.html', status="post", message="Sua presença já foi confirmada!")
+                return render_template('invite.html', status="post", message="Sua presença já foi confirmada!")
 
-        return render_template('guestlist.html', status="post", message="Falha ao Confirmar Presença!")
+        return render_template('invite.html', status="post", message="Falha ao Confirmar Presença!")
     
     elif request.method == 'GET':
-        return render_template('guestlist.html', status="get", message="")
+        return render_template('invite.html', status="get", message="")
 
 @app.route('/gifts')
 def gifts():

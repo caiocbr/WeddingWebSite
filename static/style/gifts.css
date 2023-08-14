@@ -1,0 +1,89 @@
+.content-gifts {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-left: 200px;
+    padding-right: 200px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#gifts {
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 150px;
+}
+
+.element-gift {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    align-items: center;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9000;
+    overflow-y: auto;
+}
+
+.filha {
+    position: relative;
+    width: 500px;
+    height: 600px;
+    border: none;
+    border-radius: 20px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    background-color: rgb(235, 182, 89);
+    border: none;
+    border-radius: 30px;
+    width: 80px;
+    margin-top: 10px;
+}
+
+.imagem {
+    width: 200px;
+    height: 250px;
+    cursor: pointer;
+
+}
+
+.price {
+    margin-top: 3px;
+    font-weight: bold;
+}
+
+.buttonOverlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.nome {
+    margin-top: 3px;
+    font-weight: bold;
+    color: #800000;
+}
+
+.QR {
+    width: 200px;
+    height: 200px;
+}

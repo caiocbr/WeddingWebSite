@@ -3,163 +3,49 @@
 
 <head>
     <title>Larissa e Caio</title>
-    <link rel="icon" href="../static/AllianceIcon.png" type="image/x-icon">
+    <link rel="icon" href="../static/images/AllianceIcon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/gifts.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Belleza' rel='stylesheet'>
-    <style>
-        .content-gifts {
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            padding-left: 200px;
-            padding-right: 200px;
-            margin-top: 50px;
-            margin-bottom: 50px;
-        }
-
-        #gifts {
-            padding-top: 100px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 150px;
-        }
-
-        .element-gift {
-            width: 200px;
-            display: flex;
-            flex-direction: column;
-            height: fit-content;
-            align-items: flex-start;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            /* Cor de fundo com transparência */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9000;
-            overflow-y: auto;
-            /* Z-index alto para se sobrepor ao restante da página */
-        }
-
-        .filha {
-            position: relative;
-            width: 500px;
-            height: 600px;
-            border: none;
-            border-radius: 20px;
-            background-color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .button {
-            background-color: rgb(235, 182, 89);
-            border: none;
-            border-radius: 30px;
-            width: 80px;
-            margin-top: 10px;
-        }
-
-        .imagem {
-            width: 200px;
-            height: 250px;
-            cursor: pointer;
-
-        }
-
-        .price {
-            margin-top: 3px;
-        }
-
-        .buttonOverlay {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-        }
-
-        .nome {
-            margin-top: 3px;
-            font-weight: bold;
-        }
-
-        .QR {
-            width: 200px;
-            height: 200px;
-        }
-    </style>
-    <script>
-        const gifts = [
-            {
-                name: "Objeto de decoração",
-                price: "R$30"
-            },
-            {
-                name: "Item para cozinha",
-                price: "R$50"
-            },
-            {
-                name: "Voucher para Jantar",
-                price: "R$60"
-            },
-            {
-                name: "Cota para Lua de Mel",
-                price: "R$25"
-            },
-            {
-                name: "Vinho",
-                price: "R$75"
-            },
-            {
-                name: "Plantas e Flores",
-                price: "R$40"
-            },
-            {
-                name: "Voucher Spa",
-                price: "R$55",
-            },
-
-        ];
-    </script>
-
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="mx-auto p-3" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/guestlist">Lista de Convidados</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/gifts">Presentes<span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="content-gifts">
-        <h1 class="section-title-text">Presentes</h1>
-        <div id="gifts">
-        </div>
 
-        <!-- Adicione aqui a opção para enviar uma mensagem aos noivos -->
+    <div class="loading-screen">
+        <img src="../static/images/LoadingIcon.png" style="width: 160px;">
+        <div class="loading-text">Carregando...</div>
     </div>
+
+    <div class="main-content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="mx-auto p-3" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/invite">Confirmar Presença</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/gifts">Presentes<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="content-gifts">
+            <h1 class="section-title-text">Presentes</h1>
+            <div id="gifts">
+            </div>
+
+            <!-- Adicione aqui a opção para enviar uma mensagem aos noivos -->
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -169,87 +55,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="../static/javascript/loading.js"></script>
+    <script src="../static/javascript/gifts.js"></script>
 
-    <script>
-        const handleOverlayClick = (event) => {
-
-            if (event.target.classList.contains('overlay')) {
-                // Selecionando a nova div pelo atributo de classe
-                var divParaDeletar = document.querySelector('.overlay');
-
-                // Verificando se a div foi encontrada antes de tentar removê-la
-                if (divParaDeletar) {
-                    // Removendo a div do DOM
-                    divParaDeletar.remove();
-                }
-            };
-
-            console.log("Oi");
-        }
-        const handleClose = () => {
-            var divParaDeletar = document.querySelector('.overlay');
-
-            // Verificando se a div foi encontrada antes de tentar removê-la
-            if (divParaDeletar) {
-                // Removendo a div do DOM
-                divParaDeletar.remove();
-            }
-        }
-
-        const handlebuttonclick = (e) => {
-            const nome = e.target.name;
-            var novaDiv = document.createElement('div');
-            novaDiv.setAttribute('class', 'overlay');
-            novaDiv.addEventListener('click', handleOverlayClick)
-
-            var filha = document.createElement('div');
-            filha.setAttribute('class', 'filha');
-
-            var button = document.createElement('img');
-            button.setAttribute('class', 'buttonOverlay');
-            button.src = "../static/close.png"
-            button.addEventListener('click', handleClose);
-
-            var image = document.createElement('img')
-            image.setAttribute('class', 'QR');
-            image.src = "../static/qrcode.png"
-
-            filha.appendChild(button);
-            filha.appendChild(image);
-
-            novaDiv.appendChild(filha);
-            document.body.appendChild(novaDiv);
-
-
-        }
-
-
-
-
-        // Iterando pelas divs e atribuindo o nome de cada objeto
-        for (var i = 0; i < gifts.length; i++) {
-            var divsGifts = document.createElement('div');
-            divsGifts.setAttribute('class', 'element-gift')
-
-            var image = document.createElement('img');
-            image.src = "../static/oi.png";
-            image.setAttribute('class', 'imagem');
-            image.addEventListener('click', handlebuttonclick);
-
-            var price = document.createElement('div')
-            price.textContent = gifts[i].price;
-            price.setAttribute('class', 'price');
-
-            var nome = document.createElement('div')
-            nome.textContent = gifts[i].name;
-            nome.setAttribute('class', 'nome');
-
-            divsGifts.appendChild(image);
-            divsGifts.appendChild(nome);
-            divsGifts.appendChild(price);
-            document.getElementById('gifts').appendChild(divsGifts);
-        }
-    </script>
 </body>
 
 </html>
