@@ -46,6 +46,7 @@
     border-radius: 20px;
     background-color: #fff;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -86,4 +87,11 @@
 .QR {
     width: 200px;
     height: 200px;
+}
+
+.textPopup {
+    color: #D79B62;
+    font-family: 'Great Vibes', cursive;
+    font-size: 50px;
+    margin-top: 90px;
 }

@@ -2,72 +2,128 @@ const gifts = [
     {
         name: "Jantar Romântico",
         image: "../static/images/gifts/images/Miojo.jpg",
-        price: "R$ 2,80"
-    },
-    {
-        name: "Curso de Dança Avançado",
-        image: "../static/images/gifts/images/CDIvete.png",
-        price: "R$ 30,00"
+        price: "R$ 2,80",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
     },
     {
         name: "Kit de Spa Caseiro",
         image: "../static/images/gifts/images/SoapBubble.png",
-        price: "R$ 9,99"
-    },
-    {
-        name: "Despedida de Solteiro da Noiva",
-        image: "../static/images/gifts/images/Nun.png",
-        price: "10 Pai-Nosso"
+        price: "R$ 9,99",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
     },
     {
         name: "Calmante da Noiva",
         image: "../static/images/gifts/images/VelhoBarreiro.png",
-        price: "R$ 13,43"
+        price: "R$ 13,43",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
+    },
+    {
+        name: "Curso de Dança Avançado",
+        image: "../static/images/gifts/images/CDIvete.png",
+        price: "R$ 30,00",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
+    },
+    {
+        name: "Despedida de Solteiro da Noiva",
+        image: "../static/images/gifts/images/Nun.png",
+        price: "40 Pai-Nosso",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
+    },
+    {
+        name: "Travessa de Inox",
+        image: "../static/images/gifts/images/Platter.jpeg",
+        price: "R$ 70,00",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
     },
     {
         name: "Liquidificador",
         image: "../static/images/gifts/images/Mixer.jpg",
-        price: "R$ 80,00"
+        price: "R$ 80,00",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
     },
     {
         name: "Conjunto de Talheres",
         image: "../static/images/gifts/images/Cultery.jpg",
-        price: "R$ 100,00"
+        price: "R$ 100,00",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
+    },
+    {
+        name: "Sanduicheira",
+        image: "../static/images/gifts/images/SandwichMaker.jpeg",
+        price: "R$ 110,00",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
+    },
+    {
+        name: "Mixer",
+        image: "../static/images/gifts/images/Mix.jpeg",
+        price: "R$ 130,00",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
+    },
+    {
+        name: "Espremedor de Laranja",
+        image: "../static/images/gifts/images/Juicer.jpeg",
+        price: "R$ 160,00",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
     },
     {
         name: "Jogo de Panelas",
         image: "../static/images/gifts/images/Pan.jpg",
-        price: "R$ 200,00"
+        price: "R$ 200,00",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
+    },
+    {
+        name: "Batedeira",
+        image: "../static/images/gifts/images/Mixr.jpeg",
+        price: "R$ 250,00",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
     },
     {
         name: "Aspirador",
         image: "../static/images/gifts/images/Cleaner.jpg",
-        price: "R$ 250,00"
+        price: "R$ 270,00",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
     },
     {
         name: "Airfriyer",
         image: "../static/images/gifts/images/Airfryer.jpg",
-        price: "R$ 300,00"
+        price: "R$ 300,00",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
+    },
+    {
+        name: "Cafeteira",
+        image: "../static/images/gifts/images/CoffeMachine.jpeg",
+        price: "R$ 350,00",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
+    },
+    {
+        name: "Jogo de Cama",
+        image: "../static/images/gifts/images/BeddingSet.jpeg",
+        price: "R$ 450,00",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
     },
     {
         name: "Ar-Condicionado",
         image: "../static/images/gifts/images/Air.jpg",
-        price: "R$ 700,00"
+        price: "R$ 700,00",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
     },
     {
         name: "Fogão",
         image: "../static/images/gifts/images/Stove.jpg",
-        price: "R$ 1000,00"
+        price: "R$ 1000,00",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
     },
     {
         name: "Geladeira",
         image: "../static/images/gifts/images/Refrigerator.jpg",
-        price: "R$ 1200,00"
+        price: "R$ 1200,00",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
     },
     {
         name: "Lua de Mel",
         image: "../static/images/gifts/images/Trip.jpg",
-        price: "R$ 1500,00"
+        price: "R$ 1500,00",
+        qrcode: "../static/images/gifts/qrcode/Account.png"
     },
 ];
 
@@ -106,10 +162,15 @@ function handlebuttonclick(num) {
     var image = document.createElement('img')
     image.setAttribute('class', 'QR');
     image.src = "../static/images/qrcode.png"
-    image.src = gifts[num].image;
+    image.src = gifts[num].qrcode;
+    
+    var text = document.createElement('p')
+    text.setAttribute('class', 'textPopup');
+    text.textContent = "Muito Obrigado!"
 
     filha.appendChild(button);
     filha.appendChild(image);
+    filha.appendChild(text);
 
     novaDiv.appendChild(filha);
     document.body.appendChild(novaDiv);
