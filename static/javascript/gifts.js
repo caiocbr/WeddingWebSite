@@ -184,19 +184,31 @@ function handlebuttonclick(num) {
     image.src = "../static/images/qrcode.png"
     image.src = gifts[num].qrcode;
     
-    var span = document.createElement('a')
-    span.textContent = "Pix Copia e Cola"
-    span.onclick = function() {
-        document.execCommand("copy");
-      }
-      
-      span.addEventListener("copy", function(event) {
-        event.preventDefault();
-        if (event.clipboardData) {
-          event.clipboardData.setData("text/plain", gifts[num].pixCopy);
-          alert("Código Pix Copia e Cola Copiado!");
+    if(gifts[num].pixCopy != "") {
+        var pixCopyDiv = document.createElement('div')
+        var pixCopyButton = document.createElement('button')
+        var copy = false;
+
+        pixCopyDiv.append(pixCopyButton);
+        pixCopyButton.textContent = "Pix Copia e Cola"
+        pixCopyButton.onclick = function() {
+            document.execCommand("copy");
+            console.log("oi")
         }
-      });
+        
+        document.addEventListener("copy", function(event) {
+            console.log("tchau")
+            event.preventDefault();
+            if (event.clipboardData) {
+                event.clipboardData.setData("text/plain", gifts[num].pixCopy);
+            }
+            if(!copy) {
+                var copyText = document.createElement('p')
+                copyText.textContent = "Copiado!"; 
+                pixCopyDiv.append(copyText);
+            }
+        });
+    }
 
     var text = document.createElement('p')
     text.setAttribute('class', 'textPopup');
@@ -204,7 +216,9 @@ function handlebuttonclick(num) {
 
     filha.appendChild(button);
     filha.appendChild(image);
-    filha.appendChild(span);
+    if(gifts[num].pixCopy != "") {
+        filha.appendChild(pixCopyDiv);
+    }
     filha.appendChild(text);
 
     novaDiv.appendChild(filha);
