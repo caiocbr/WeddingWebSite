@@ -185,24 +185,25 @@ function handlebuttonclick(num) {
     image.src = gifts[num].qrcode;
     
     if(gifts[num].pixCopy != "") {
-        var pixCopyDiv = document.createElement('div')
-        var pixCopyButton = document.createElement('button')
+        var pixCopyDiv = document.createElement('div');
+        var pixCopyButton = document.createElement('button');
         var copy = false;
 
+        pixCopyDiv.setAttribute("style" , "display: flex; flex-direction: column; align-items: center;")
         pixCopyDiv.append(pixCopyButton);
         pixCopyButton.textContent = "Pix Copia e Cola"
+        pixCopyButton.setAttribute('class', 'buttonCopy');
         pixCopyButton.onclick = function() {
             document.execCommand("copy");
-            console.log("oi")
         }
         
         document.addEventListener("copy", function(event) {
-            console.log("tchau")
             event.preventDefault();
             if (event.clipboardData) {
                 event.clipboardData.setData("text/plain", gifts[num].pixCopy);
             }
             if(!copy) {
+                copy = true;
                 var copyText = document.createElement('p')
                 copyText.textContent = "Copiado!"; 
                 pixCopyDiv.append(copyText);

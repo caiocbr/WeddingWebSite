@@ -95,3 +95,15 @@
     font-size: 50px;
     margin-top: 90px;
 }
+
+.buttonCopy {
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+    background-color: #ac4341;
+    height: 30px;
+    width: 140px;
+    cursor: pointer;
+    font-family: 'Belleza';
+  }
