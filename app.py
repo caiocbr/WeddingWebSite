@@ -9,6 +9,10 @@ client = database.connect_to_mongodb()
 db = client['GuestList']
 collection = db['Guests']
 
+# GuestList Info
+guestList = ["Saulo Lindemberg Lopes", "Salsicha"]
+guestCode = ["00000001", "00000024"]
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -18,9 +22,8 @@ def guestlist():
     if request.method == 'POST':
         name = request.form.get('name')
         code = request.form.get('confirmationCode')
-        print(str(compute_hash(name)))
 
-        if code.isdigit() and compute_hash(name) == int(code):
+        if validate_guest(name, code):
             updated = database.update_guest_status(collection, name, True)
             if updated == "updated":
                 return render_template('invite.html', status="post", message="Presença de " + name + " confirmada!")
@@ -55,6 +58,16 @@ def compute_hash(s):
         hash_value = (hash_value + (ord(c) + 1) * p_pow) % m
         p_pow = (p_pow * p) % m
     return hash_value
+
+def validate_guest(name, code):
+    for i in range(len(guestList)):
+        if guestList[i] == name and guestCode[i] == code:
+            return True
+    
+    if code.isdigit() and compute_hash(name) == int(code):
+        return True
+
+    return False
 
 if __name__ == '__main__':
     app.run(debug=True)
